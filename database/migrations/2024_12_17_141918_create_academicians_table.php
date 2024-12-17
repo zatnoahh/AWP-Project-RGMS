@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('academicians', function (Blueprint $table) {
             $table->id();
+            $table->string('name')->varchar(100);
+            $table->string('staff_number')->varchar(50);
+            $table->string('email')->unique()->varchar(255);
+            $table->string('collage')->varchar(100);
+            $table->string('department');
+            $table->string('position');
+            $table->string('role')->default('member');
             $table->timestamps();
         });
     }
