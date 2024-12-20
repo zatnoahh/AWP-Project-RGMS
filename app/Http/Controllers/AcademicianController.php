@@ -12,7 +12,8 @@ class AcademicianController extends Controller
      */
     public function index()
     {
-        //
+        $academicians = Academician::all();
+        return view('academicians.index',compact('academicians'));
     }
 
     /**
@@ -20,7 +21,7 @@ class AcademicianController extends Controller
      */
     public function create()
     {
-        //
+        return view('academicians.create');
     }
 
     /**
@@ -28,7 +29,20 @@ class AcademicianController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'staff_number' => 'required',
+            'email' => 'required',
+            'collage' => 'required',
+            'department' => 'required',
+            'position' => 'required',
+            'user_id' => 'required',
+        ]);
+
+        Academician::create($request->all());
+
+        return redirect()->route('academicians.index')
+            ->with('success','Academician created successfully.');
     }
 
     /**
@@ -36,7 +50,7 @@ class AcademicianController extends Controller
      */
     public function show(Academician $academician)
     {
-        //
+        return view('academicians.show', compact('academician'));
     }
 
     /**
@@ -44,7 +58,7 @@ class AcademicianController extends Controller
      */
     public function edit(Academician $academician)
     {
-        //
+        return view('academicians.edit',compact('academician'));
     }
 
     /**
@@ -52,7 +66,20 @@ class AcademicianController extends Controller
      */
     public function update(Request $request, Academician $academician)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'staff_number' => 'required',
+            'email' => 'required',
+            'collage' => 'required',
+            'department' => 'required',
+            'position' => 'required',
+            'user_id' => 'required',
+        ]);
+
+        $academician->update($request->all());
+
+        return redirect()->route('academicians.index')
+            ->with('success','Academician updated successfully');
     }
 
     /**
@@ -60,6 +87,9 @@ class AcademicianController extends Controller
      */
     public function destroy(Academician $academician)
     {
-        //
+        $academician->delete();
+
+        return redirect()->route('academicians.index')
+            ->with('success','Academician deleted successfully');
     }
 }

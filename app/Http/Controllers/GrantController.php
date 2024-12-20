@@ -12,7 +12,8 @@ class GrantController extends Controller
      */
     public function index()
     {
-        //
+        $grants = Grant::all();
+        return view('grants.index',compact('grants'));
     }
 
     /**
@@ -20,7 +21,7 @@ class GrantController extends Controller
      */
     public function create()
     {
-        //
+        return view('grants.create');
     }
 
     /**
@@ -28,7 +29,19 @@ class GrantController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'grant_title' => 'required',
+            'grant_provider' => 'required',
+            'grant_amount' => 'required',
+            'description' => 'required',
+            'grant_start_date' => 'required',
+            'duration' => 'required',
+        ]);
+
+        Grant::create($request->all());
+
+        return redirect()->route('grants.index')
+            ->with('success','Grant created successfully.');
     }
 
     /**
@@ -36,7 +49,7 @@ class GrantController extends Controller
      */
     public function show(Grant $grant)
     {
-        //
+        return view('grants.show', compact('grant'));
     }
 
     /**
@@ -44,7 +57,7 @@ class GrantController extends Controller
      */
     public function edit(Grant $grant)
     {
-        //
+        return view('grants.edit',compact('grant'));
     }
 
     /**
@@ -52,7 +65,19 @@ class GrantController extends Controller
      */
     public function update(Request $request, Grant $grant)
     {
-        //
+        $request->validate([
+            'grant_title' => 'required',
+            'grant_provider' => 'required',
+            'grant_amount' => 'required',
+            'description' => 'required',
+            'grant_start_date' => 'required',
+            'duration' => 'required',
+        ]);
+
+        $grant->update($request->all());
+
+        return redirect()->route('grants.index')
+            ->with('success','Grant updated successfully');
     }
 
     /**
@@ -60,6 +85,9 @@ class GrantController extends Controller
      */
     public function destroy(Grant $grant)
     {
-        //
+        $grant->delete();
+
+        return redirect()->route('grants.index')
+            ->with('success','Grant deleted successfully'); 
     }
 }

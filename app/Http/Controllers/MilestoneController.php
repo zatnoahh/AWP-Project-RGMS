@@ -12,7 +12,8 @@ class MilestoneController extends Controller
      */
     public function index()
     {
-        //
+        $milestones = Milestone::all();
+        return view('milestones.index',compact('milestones'));
     }
 
     /**
@@ -20,7 +21,7 @@ class MilestoneController extends Controller
      */
     public function create()
     {
-        //
+        return view('milestones.create');
     }
 
     /**
@@ -28,7 +29,21 @@ class MilestoneController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'grant_id' => 'required',
+            'milestone_title' => 'required',
+            'completion_date' => 'required',
+            'deliverable' => 'required',
+            'status' => 'required',
+            'remarks' => 'required',
+            'date_updated' => 'required',
+            
+        ]);
+
+        Milestone::create($request->all());
+
+        return redirect()->route('milestones.index')
+            ->with('success','Milestone created successfully.');
     }
 
     /**
@@ -36,7 +51,7 @@ class MilestoneController extends Controller
      */
     public function show(Milestone $milestone)
     {
-        //
+        return view('milestones.show', compact('milestone'));
     }
 
     /**
@@ -44,7 +59,7 @@ class MilestoneController extends Controller
      */
     public function edit(Milestone $milestone)
     {
-        //
+        return view('milestones.edit',compact('milestone'));
     }
 
     /**
@@ -52,7 +67,20 @@ class MilestoneController extends Controller
      */
     public function update(Request $request, Milestone $milestone)
     {
-        //
+        $request->validate([
+            'grant_id' => 'required',
+            'milestone_title' => 'required',
+            'completion_date' => 'required',
+            'deliverable' => 'required',
+            'status' => 'required',
+            'remarks' => 'required',
+            'date_updated' => 'required',
+        ]);
+
+        $milestone->update($request->all());
+
+        return redirect()->route('milestones.index')
+            ->with('success','Milestone updated successfully');
     }
 
     /**
@@ -60,6 +88,9 @@ class MilestoneController extends Controller
      */
     public function destroy(Milestone $milestone)
     {
-        //
+        $milestone->delete();
+
+        return redirect()->route('milestones.index')
+            ->with('success','Milestone deleted successfully');
     }
 }
