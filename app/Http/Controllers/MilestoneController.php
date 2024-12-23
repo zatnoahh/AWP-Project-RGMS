@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Grant;
 use App\Models\Milestone;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,8 @@ class MilestoneController extends Controller
      */
     public function create()
     {
-        return view('milestones.create');
+        $grants = Grant::all();
+        return view('milestones.create', compact('grants'));
     }
 
     /**

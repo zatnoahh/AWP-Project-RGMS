@@ -21,7 +21,9 @@ class GrantController extends Controller
      */
     public function create()
     {
+        $grants = Grant::all();
         return view('grants.create');
+        return view('milestones.create', compact('grants'));
     }
 
     /**
