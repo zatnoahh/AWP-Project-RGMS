@@ -1,13 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create Grant</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-</head>
-<body>
     <div class="container">
         <h1>Create a New Milestone</h1>
         <form action="{{ route('milestones.store') }}" method="POST">
@@ -47,7 +40,6 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+
     </div>
-</body>
-</html>
 @endsection
