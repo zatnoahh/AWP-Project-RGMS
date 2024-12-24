@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Academician;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AcademicianController extends Controller
@@ -21,6 +22,7 @@ class AcademicianController extends Controller
      */
     public function create()
     {
+        $users = User::all();
         return view('academicians.create');
     }
 

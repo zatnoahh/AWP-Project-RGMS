@@ -32,7 +32,7 @@ class MilestoneController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'grant_id' => 'required',
+            'grant_id' => 'required|exists:grants,id',
             'milestone_title' => 'required',
             'completion_date' => 'required',
             'deliverable' => 'required',
@@ -53,7 +53,8 @@ class MilestoneController extends Controller
      */
     public function show(Milestone $milestone)
     {
-        return view('milestones.show', compact('milestone'));
+        $grants = Grant::all();
+        return view('milestones.show', compact('milestone', 'grants'));
     }
 
     /**
