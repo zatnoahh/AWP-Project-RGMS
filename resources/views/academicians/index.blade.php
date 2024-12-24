@@ -1,14 +1,9 @@
 @extends('layouts.app')
 @section('content')
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Academicians</title>
-</head>
-<body>
     <div class="container">
         <h1>Academicians</h1>
+        <a href="{{ route('academicians.create') }}" class="btn btn-success">Create</a>
         <table class="table table-bordered" >
             <thead>
                 <tr>
@@ -19,6 +14,7 @@
                     <th>College</th>
                     <th>Department</th>
                     <th>Position</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,11 +27,19 @@
                     <td>{{ $academician->collage }}</td>
                     <td>{{ $academician->department }}</td>
                     <td>{{ $academician->position }}</td>
+                    <td>
+                        <a href="{{ route('academicians.show', $academician->id) }}" class="btn btn-info">Show</a>
+                        <a href="{{ route('academicians.edit', $academician->id) }}" class="btn btn-primary">Edit</a>
+                        <form method="POST" action="{{ route('academicians.destroy', $academician->id) }}" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-</body>
-</html>
+
 @endsection

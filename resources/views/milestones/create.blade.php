@@ -6,9 +6,9 @@
         <form action="{{ route('milestones.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="grant_name">Grant Name:</label>
-                <select name="grant_id" id="grant_id" class="form-control">
-                <option value="" disabled selected>Please select a grant</option>
+                <label for="grant_id">Select Grant:</label>
+                <select name="grant_id" id="grant_id" class="form-control" required>
+                    <option value="">-- Select a Grant --</option>
                     @foreach($grants as $grant)
                         <option value="{{ $grant->id }}">{{ $grant->grant_title }}</option>
                     @endforeach

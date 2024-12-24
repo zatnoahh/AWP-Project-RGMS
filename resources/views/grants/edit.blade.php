@@ -28,5 +28,6 @@
         
         <button type="submit" class="btn btn-primary">Update Grant</button>
     </form>
+    <a href="{{ route('grants.index') }}" class="btn btn-secondary mt-3">Back to Grants</a>
 </div>
 @endsection

@@ -34,16 +34,16 @@
         </div>
         <div class="form-group">
             <label for="position">Position:</label>
-            <input type="text" class="form-control" id="position" name="position" required>
-        </div>
-        <div class="form-group">
-            <label for="role">Role:</label>
-            <select class="form-control" id="role" name="role" required>
-                <option value="" disabled selected>Please select a role</option>
+            <select class="form-control" id="position" name="position" required>
+                <option value="" disabled selected>Please select a position</option>
                 <option value="Project Leader">Project leader</option>
                 <option value="Project Member">Project Member</option>
                 <option value="Researcher">Researcher</option>
             </select>
+        </div>
+        <div class="form-group">
+            <label for="user">user:</label>
+            <input type="text" class="form-control" id="user_id" name="user_id" required>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
