@@ -1,13 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create Grant</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-</head>
-<body>
+
 <div class="container">
     <h1>Create A New Academician</h1>
     <form action="{{ route('academicians.store') }}" method="POST">
@@ -36,18 +30,18 @@
             <label for="position">Position:</label>
             <select class="form-control" id="position" name="position" required>
                 <option value="" disabled selected>Please select a position</option>
-                <option value="Project Leader">Project leader</option>
-                <option value="Project Member">Project Member</option>
-                <option value="Researcher">Researcher</option>
+                <option value="Professor">Professor</option>
+                <option value="Assoc Prof">Assoc Prof</option>
+                <option value="Senior Lecturer">Senior Lecturer</option>
+                <option value="Lecturer">Lecturer</option>
             </select>
         </div>
         <div class="form-group">
-            <label for="user">user:</label>
+            <label for="User ID">user:</label> 
             <input type="text" class="form-control" id="user_id" name="user_id" required>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
-</body>
-</html>
+
 @endsection
