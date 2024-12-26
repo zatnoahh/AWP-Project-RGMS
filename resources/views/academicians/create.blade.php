@@ -36,11 +36,12 @@
                 <option value="Lecturer">Lecturer</option>
             </select>
         </div>
-        <div class="form-group">
-            <label for="User ID">user:</label> 
-            <input type="text" class="form-control" id="user_id" name="user_id" required>
+        <div>
+            <label for="phone">User ID:</label>
+            <input type="text" class="form-control" id="user_id" name="user_id" required>  
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
+        <a href="{{ route('academicians.index') }}" class="btn btn-secondary">Cancel</a>
     </form>
 </div>
 

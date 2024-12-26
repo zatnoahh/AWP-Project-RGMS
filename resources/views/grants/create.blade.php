@@ -35,7 +35,9 @@
             <div class="form-group">
                 <label for="deadline">Duration (Months):</label>
                 <input type="integer" class="form-control" id="duration" name="duration" required>
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{ route('grants.index') }}" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
 </body>

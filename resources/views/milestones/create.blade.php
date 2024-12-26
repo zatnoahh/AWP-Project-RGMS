@@ -39,6 +39,7 @@
                 <input type="date" class="form-control" id="date_updated" name="date_updated" required>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{ route('milestones.index') }}" class="btn btn-secondary">Cancel</a>
         </form>
 
     </div>

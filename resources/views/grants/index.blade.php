@@ -10,7 +10,7 @@
                 <th>ID</th>
                 <th>Grant Title</th>
                 <th>Grant Provider</th>
-                <th>Grant Amount</th>
+                <th>Grant Amount (RM)</th>
                 <th>Description</th>
                 <th>Grant Start Date</th>
                 <th>Duration</th>
