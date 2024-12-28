@@ -19,8 +19,8 @@
             <input type="email" class="form-control" id="email" name="email" required>
         </div>
         <div class="form-group">
-            <label for="collage">Collage:</label>
-            <input type="text" class="form-control" id="collage" name="collage" required>
+            <label for="cellage">College:</label>
+            <input type="text" class="form-control" id="college" name="college" required>
         </div>
         <div class="form-group">
             <label for="department">Department:</label>
@@ -36,13 +36,8 @@
                 <option value="Lecturer">Lecturer</option>
             </select>
         </div>
-        <div>
-            <label for="phone">User ID:</label>
-            <input type="text" class="form-control" id="user_id" name="user_id" required>  
-        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
         <a href="{{ route('academicians.index') }}" class="btn btn-secondary">Cancel</a>
     </form>
-</div>
-
+    
 @endsection

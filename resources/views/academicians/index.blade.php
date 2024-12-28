@@ -24,7 +24,7 @@
                     <td>{{ $academician->name }}</td>
                     <td>{{ $academician->staff_number }}</td>
                     <td>{{ $academician->email }}</td>
-                    <td>{{ $academician->collage }}</td>
+                    <td>{{ $academician->college }}</td>
                     <td>{{ $academician->department }}</td>
                     <td>{{ $academician->position }}</td>
                     <td>

@@ -19,8 +19,8 @@
                 <input type="email" class="form-control" placeholder="Enter email" name="email" value="{{ $academician->email }}">
             </div>
             <div class="form-group">
-                <label>Collage:</label>
-                <input type="text" class="form-control" placeholder="Enter collage" name="collage" value="{{ $academician->collage }}">
+                <label>College:</label>
+                <input type="text" class="form-control" placeholder="Enter college" name="college" value="{{ $academician->college }}">
             </div>
             <div class="form-group">
                 <label>Department:</label>

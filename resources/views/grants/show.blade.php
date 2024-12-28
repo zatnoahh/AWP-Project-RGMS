@@ -15,6 +15,36 @@
                 <p><strong>Duration (Month):</strong> {{ $grant->duration }}</p>
             </div>
         </div>
+
+        <div class="card mt-3">
+            <div class="card-header">
+            <h3>Grant Members</h3>
+            </div>
+            <div class="card-body">
+            @if($grant->academicians->isEmpty())
+                <p>No members found for this grant.</p>
+            @else
+                <table class="table">
+                <thead>
+                    <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Role</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($grant->academicians as $academician)
+                    <tr>
+                        <td>{{ $academician->name }}</td>
+                        <td>{{ $academician->email }}</td>
+                        <td>{{ $academician->pivot->role }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+                </table>
+            @endif
+            </div>
+        </div>
         <a href="{{ route('grants.index') }}" class="btn btn-primary mt-3">Back to List</a>
     </div>
 @endsection
