@@ -77,6 +77,9 @@ class GrantController extends Controller
             'role' => 'Project Leader',
         ]);
 
+        if (in_array($request->project_leader, $request->members)) {
+            return back()->with('error', 'The project leader cannot be a member of the same grant.');
+        }
         
 
         

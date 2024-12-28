@@ -29,6 +29,7 @@
                 <th>Description</th>
                 <th>Start Date</th>
                 <th>Duration (Month)</th>
+                <th>Role</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,6 +41,7 @@
                     <td>{{ $grant->description }}</td>
                     <td>{{ $grant->grant_start_date }}</td>
                     <td>{{ $grant->duration }}</td>
+                    <td>{{ $grant->pivot->role }}</td>
                 </tr>
                 @endforeach
             </tbody>

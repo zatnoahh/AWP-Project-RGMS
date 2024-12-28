@@ -7,7 +7,6 @@
         <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Grant ID</th>
                     <th>Grant Title</th>
                     <th>Milestone Title</th>
@@ -22,7 +21,6 @@
             <tbody>
                 @foreach($milestones as $milestone)
                 <tr>
-                    <td>{{ $milestone->id }}</td>
                     <td>{{ $milestone->grant_id }}</td>
                     <td>{{ $milestone->grant->grant_title }}</td>
                     <td>{{ $milestone->milestone_title }}</td>
