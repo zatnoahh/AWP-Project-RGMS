@@ -45,6 +45,42 @@
             @endif
             </div>
         </div>
+
+        <div class="card mt-3">
+            <div class="card-header">
+                <h3>Milestones</h3>
+            </div>
+            <div class="card-body">
+                @if($grant->milestones->isEmpty())
+                    <p>No milestones found for this grant.</p>
+                @else
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Target Completion Date</th>
+                                <th>Deliverables</th>
+                                <th>Status</th>
+                                <th>Remarks</th>
+                                <th>Updated On</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($grant->milestones as $milestone)
+                                <tr>
+                                    <td>{{ $milestone->milestone_title }}</td>
+                                    <td>{{ $milestone->completion_date }}</td>
+                                    <td>{{ $milestone->deliverable }}</td>
+                                    <td>{{ $milestone->status }}</td>
+                                    <td>{{ $milestone->remarks }}</td>
+                                    <td>{{ $milestone->date_updated }}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                @endif
+            </div>
+        </div>
         <a href="{{ route('grants.index') }}" class="btn btn-primary mt-3">Back to List</a>
     </div>
 @endsection
