@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Grant;
+use App\Models\Academician;
+use App\Models\AcademicianGrant;
 use Illuminate\Http\Request;
 
 class GrantController extends Controller
@@ -22,7 +24,13 @@ class GrantController extends Controller
     public function create()
     {
         $grants = Grant::all();
-        return view('grants.create');
+        // Fetch all academicians who are not project leaders
+        $academicians = Academician::whereDoesntHave('grants', function ($query) {
+            $query->where('role', 'Project Leader');
+        })->get();
+
+        // Return the grant creation form view
+        return view('grants.create', compact('academicians'));
         return view('milestones.create', compact('grants'));
     }
 
@@ -33,17 +41,47 @@ class GrantController extends Controller
     {
         $request->validate([
             'grant_title' => 'required',
+            'project_leader' => 'required|exists:academicians,id',
             'grant_provider' => 'required',
             'grant_amount' => 'required',
             'description' => 'required',
             'grant_start_date' => 'required',
             'duration' => 'required',
+
+            'members' => 'nullable|array',
+            'members.*' => 'exists:academicians,id',
         ]);
 
-        Grant::create($request->all());
 
-        return redirect()->route('grants.index')
-            ->with('success','Grant created successfully.');
+        // Create the grant (assuming you have other fields to save)
+        $grant = Grant::create([
+            'grant_title' => $request->grant_title,
+            'grant_provider' => $request->grant_provider,
+            'grant_amount' => $request->grant_amount,
+            'description' => $request->description,
+            'grant_start_date' => $request->grant_start_date,
+            'duration' => $request->duration,
+        ]);
+
+        // Attach the members to the grant
+        if ($request->has('members')) {
+                    foreach ($request->members as $memberId) {
+                        $grant->academicians()->attach($memberId, ['role' => 'Member']);
+                    }
+        }
+
+         // Create the entry in the academician_grant table
+         AcademicianGrant::create([
+            'grant_id' => $grant->id,
+            'academician_id' => $request->project_leader,
+            'role' => 'Project Leader',
+        ]);
+
+        
+
+        
+
+        return redirect()->route('grants.index')->with('success', 'Grant created successfully!');
     }
 
     /**
@@ -59,7 +97,8 @@ class GrantController extends Controller
      */
     public function edit(Grant $grant)
     {
-        return view('grants.edit',compact('grant'));
+        $academicians = Academician::all();
+        return view('grants.edit', compact('grant', 'academicians'));
     }
 
     /**

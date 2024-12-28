@@ -9,11 +9,13 @@
             <tr>
                 <th>ID</th>
                 <th>Grant Title</th>
+                <th>Grant Project Leader</th>
+                <th>Grant Members</th>
                 <th>Grant Provider</th>
                 <th>Grant Amount (RM)</th>
                 <th>Description</th>
                 <th>Grant Start Date</th>
-                <th>Duration</th>
+                <th>Duration (Month)</th>
                 <th>Action</th>
             </tr>
             </thead>
@@ -22,6 +24,19 @@
             <tr>
                 <td>{{ $grant->id }}</td>
                 <td>{{ $grant->grant_title }}</td>
+                <td>
+                    @foreach($grant->academicians as $academician)
+                        @if($academician->pivot->role == 'Project Leader')
+                            {{ $academician->name }}
+                        @endif
+                    @endforeach
+                </td>
+                <td>
+                    @foreach($grant->academicians as $academician)
+                        @if($academician->pivot->role == 'Member')
+                            <li>{{ $academician->name }}</li>
+                        @endif
+                    @endforeach
                 <td>{{ $grant->grant_provider }}</td>
                 <td>{{ $grant->grant_amount }}</td>
                 <td>{{ $grant->description }}</td>

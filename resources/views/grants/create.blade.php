@@ -1,13 +1,6 @@
 @extends('layouts.app')
 @section('content')
 
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create Grant</title>
-    <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
-</head>
-<body>
     <div class="container">
         <h1>Create a New Grant</h1>
         <form action="{{ route('grants.store') }}" method="POST">
@@ -15,6 +8,15 @@
             <div class="form-group">
                 <label for="title">Grant Title:</label>
                 <input type="text" class="form-control" id="title" name="grant_title" required>
+            </div>
+            <div class="form-group">
+            <label for="project_leader">Project Leader</label>
+            <select class="form-control" id="project_leader" name="project_leader" required>
+                <option value="" disabled selected>Please select a project leader</option>
+                @foreach($academicians as $academician)
+                    <option value="{{ $academician->id }}">{{ $academician->name }}</option>
+                @endforeach
+            </select>
             </div>
             <div class="form-group">
                 <label for="organization">Grant Provider:</label>
@@ -36,10 +38,20 @@
                 <label for="deadline">Duration (Months):</label>
                 <input type="integer" class="form-control" id="duration" name="duration" required>
             </div>
+
+
+            <!-- Project Members -->
+            <label for="members">Project Members</label>
+            <select name="members[]" multiple>
+                @foreach($academicians as $academician)
+                    <option value="{{ $academician->id }}">{{ $academician->name }}</option>
+                @endforeach
+            </select>
+
+            
             <button type="submit" class="btn btn-primary">Submit</button>
             <a href="{{ route('grants.index') }}" class="btn btn-secondary">Cancel</a>
         </form>
     </div>
-</body>
-</html>
+
 @endsection
