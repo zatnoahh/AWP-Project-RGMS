@@ -40,18 +40,22 @@
                         <input type="text" class="form-control" id="status" name="status" required>
                     </div>
                     <div class="col-md-6 form-group">
-                        <label for="remarks">Remarks:</label>
-                        <textarea class="form-control" id="remarks" name="remarks"></textarea>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 form-group">
                         <label for="date_updated">Date Updated:</label>
                         <input type="date" class="form-control" id="date_updated" name="date_updated" required>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <a href="{{ route('milestones.index') }}" class="btn btn-secondary">Cancel</a>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="remarks">Remarks:</label>
+                        <textarea class="form-control" id="remarks" name="remarks"></textarea>
+                    </div>
+                </div>
+                <div class="row justify-content-center mt-4">
+                    <div class="col-md-6 text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <a href="{{ route('milestones.index') }}" class="btn btn-secondary">Cancel</a>
+                    </div>
+                </div>
             </form>
         </div>
     </div>

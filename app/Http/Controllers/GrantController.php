@@ -15,7 +15,8 @@ class GrantController extends Controller
     public function index()
     {
         $grants = Grant::all();
-        return view('grants.index',compact('grants'));
+        $totalgrants = $grants->count();
+        return view('grants.index',compact('grants', 'totalgrants'));
     }
 
     /**

@@ -15,7 +15,10 @@ class AcademicianController extends Controller
     public function index()
     {
         $academicians = Academician::all();
-        return view('academicians.index',compact('academicians'));
+        $totalAcademicians = $academicians->count();
+
+        return view('academicians.index', compact('academicians', 'totalAcademicians'));
+
     }
 
     /**

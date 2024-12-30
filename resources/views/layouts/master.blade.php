@@ -67,9 +67,10 @@
     <div class="app-wrapper">
 
         <!--begin::Header-->   
-
         <!-- Navbar Section -->
         @include('layouts.header')
+
+
 
         <!-- Sidebar Section -->
         @include('layouts.sidebar')
@@ -84,7 +85,7 @@
                 @yield('content') <!-- This is where page-specific content will be injected -->
             </section>
         </div>
-
+  
         <!-- Footer Section -->
         @include('layouts.footer')
 

@@ -30,20 +30,25 @@
               data-accordion="false"
             >
               <li class="nav-item">
+                <a href="{{ url('/dashboard') }}" class="nav-link">
+                  <i class="nav-icon bi bi-house"></i>
+                  <p>Dashboard</p>
+                </a>
+              <li class="nav-item">
                 <a href="{{ route('academicians.index') }}" class="nav-link">
-                  <i class="nav-icon bi bi-palette"></i>
+                  <i class="nav-icon bi bi-people"></i>
                   <p>Academicians</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ route('grants.index') }}" class="nav-link">
-                  <i class="nav-icon bi bi-palette"></i>
+                <a href="{{ route('grants.index') }}" class="nav-link"> 
+                <i class="nav-icon bi bi-file-earmark"></i>
                   <p>Grants</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="{{ route('milestones.index') }}" class="nav-link">
-                  <i class="nav-icon bi bi-palette"></i>
+                  <i class="nav-icon bi bi-signpost"></i>
                   <p>Milestones</p>
                 </a>
               </li>
@@ -66,7 +71,7 @@
                 </ul>
               </li>
 
-              <li class="nav-header">EXAMPLES</li>
+              <li class="nav-header">SETTING</li>
               <li class="nav-item">
                 <a href="#" class="nav-link">
                   <i class="nav-icon bi bi-box-arrow-in-right"></i>
