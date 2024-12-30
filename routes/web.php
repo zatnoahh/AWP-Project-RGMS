@@ -6,7 +6,7 @@ use App\Http\Controllers\MilestoneController;
 use App\Http\Controllers\AcademicianController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcomebootstrap');
 });
 
 Auth::routes();
