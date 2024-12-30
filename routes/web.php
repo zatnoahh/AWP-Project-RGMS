@@ -20,3 +20,8 @@ Route::resource('/academicians', AcademicianController::class);
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
+Route::get('/error403', function () {
+    return view('errors.403')
+        ->with('error', '403')
+        ->with('message', 'You are not authorized to access this page.');
+});
