@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="en">
+
+    <!--done-->
   <!--begin::Head-->
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -60,10 +62,14 @@
     />
   </head>
   <!--end::Head-->
+  <!--done-->
+
   <!--begin::Body-->
   <body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
     <!--begin::App Wrapper-->
     <div class="app-wrapper">
+        <!--done-->
+
       <!--begin::Header-->
       <nav class="app-header navbar navbar-expand bg-body">
         <!--begin::Container-->
@@ -263,6 +269,8 @@
         <!--end::Container-->
       </nav>
       <!--end::Header-->
+      <!--done-->
+
       <!--begin::Sidebar-->
       <aside class="app-sidebar bg-body-secondary shadow" data-bs-theme="dark">
         <!--begin::Sidebar Brand-->
@@ -712,6 +720,8 @@
         <!--end::Sidebar Wrapper-->
       </aside>
       <!--end::Sidebar-->
+      <!--done-->
+
       <!--begin::App Main-->
       <main class="app-main">
         <!--begin::App Content Header-->
@@ -1154,6 +1164,8 @@
         <!--end::App Content-->
       </main>
       <!--end::App Main-->
+      <!--Done-->
+
       <!--begin::Footer-->
       <footer class="app-footer">
         <!--begin::To the end-->
@@ -1170,7 +1182,11 @@
       <!--end::Footer-->
     </div>
     <!--end::App Wrapper-->
-    <!--begin::Script-->
+
+  </body>
+  <!--end::Body-->
+
+  <!--begin::Script-->
     <!--begin::Third Party Plugin(OverlayScrollbars)-->
     <script
       src="https://cdn.jsdelivr.net/npm/overlayscrollbars@2.10.1/browser/overlayscrollbars.browser.es6.min.js"
@@ -1419,6 +1435,4 @@
       sparkline3.render();
     </script>
     <!--end::Script-->
-  </body>
-  <!--end::Body-->
 </html>
