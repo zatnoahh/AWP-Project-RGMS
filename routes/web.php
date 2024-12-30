@@ -17,5 +17,3 @@ Route::resource('/grants', GrantController::class);
 Route::resource('/milestones', MilestoneController::class);
 Route::resource('/academicians', AcademicianController::class);
 
-
-
