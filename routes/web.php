@@ -12,6 +12,11 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [App\Http\Controllers\ProfileController::class, 'index'])->name('profile.index');
+    Route::get('/settings', [App\Http\Controllers\SettingsController::class, 'index'])->name('settings.index');
+
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::resource('/grants', GrantController::class);
@@ -24,4 +29,8 @@ Route::get('/error403', function () {
     return view('errors.403')
         ->with('error', '403')
         ->with('message', 'You are not authorized to access this page.');
+});
+
+
+Route::get('/projects', [App\Http\Controllers\ProjectController::class, 'index'])->name('projects.index');
 });

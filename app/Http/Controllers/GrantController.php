@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use App\Models\Grant;
 use App\Models\Academician;
 use App\Models\AcademicianGrant;
@@ -14,9 +16,23 @@ class GrantController extends Controller
      */
     public function index()
     {
-        $grants = Grant::all();
+        $user = Auth::user();
+    
+        if ($user->userCategory === 'admin' || $user->userCategory === 'staff') {
+            // Admin and staff can view all grants
+            $grants = Grant::all();
+        } elseif ($user->userCategory === 'academician' && $user->academician) {
+            // Academicians who are project leaders can view their grants
+            $grants = Grant::whereHas('academicianGrants', function ($query) use ($user) {
+                $query->where('academician_id', $user->academician->id)->where('role', 'Project Leader');
+            })->get();
+        } else {
+            // Other users cannot view any grants
+            $grants = collect();
+        }
+
         $totalgrants = $grants->count();
-        return view('grants.index',compact('grants', 'totalgrants'));
+        return view('grants.index', compact('grants', 'totalgrants'));
     }
 
     /**

@@ -16,4 +16,19 @@ class AcademicianGrant extends Model
         'academician_id',
         'role',
     ];
+
+    public function academician()
+    {
+        return $this->belongsTo(Academician::class);
+    }
+
+    public function grant()
+    {
+        return $this->belongsTo(Grant::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

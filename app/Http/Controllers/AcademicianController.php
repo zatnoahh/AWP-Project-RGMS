@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Academician;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 
 class AcademicianController extends Controller
@@ -12,14 +13,17 @@ class AcademicianController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        $academicians = Academician::all();
-        $totalAcademicians = $academicians->count();
+        public function index()
+        {
+            if (Gate::denies('isAdmin') && Gate::denies('isStaff')) {
+                return view('errors.403');
+            } else {
+                $academicians = Academician::all();
+                $totalAcademicians = $academicians->count();
 
-        return view('academicians.index', compact('academicians', 'totalAcademicians'));
-
-    }
+                return view('academicians.index', compact('academicians', 'totalAcademicians'));
+            }
+        }
 
     /**
      * Show the form for creating a new resource.

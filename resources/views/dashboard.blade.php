@@ -42,12 +42,14 @@
 
                             ></path>
                         </svg>
+                        
                         <a
                             href="{{ route('academicians.create') }}"
                             class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
-                        >
+                        >@can('isAdmin')
                             Create Academician <i class="bi bi-link-45deg"></i>
-                        </a>
+                        @endcan</a>
+                        
                     </div>
                     <!--end::Small Box Widget 1-->
                 </div>
@@ -71,11 +73,15 @@
                             ></path>
                         </svg>
                         <a
+                        
                             href="{{ route('grants.create') }}"
                             class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
                         >
+                        @can('isAdmin')
                             Create Grant <i class="bi bi-link-45deg"></i>
+                            @endcan
                         </a>
+                        
                     </div>
                     <!--end::Small Box Widget 2-->
                 </div>
@@ -106,8 +112,9 @@
                             href="{{ route('milestones.create') }}"
                             class="small-box-footer link-dark link-underline-opacity-0 link-underline-opacity-50-hover"
                         >
+                        @can('isAdmin')
                             Add Milestone <i class="bi bi-link-45deg"></i>
-                        </a>
+                        @endcan</a>
                     </div>
                     <!--end::Small Box Widget 3-->
                 </div>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>CodePen - 403 Forbidden</title>
-  <link rel="stylesheet" href="./error403/style.css">
+  <link rel="stylesheet" href="public\error403\style.css">
 
 </head>
 <body>

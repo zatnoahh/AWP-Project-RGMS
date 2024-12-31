@@ -15,11 +15,16 @@ class Grant extends Model
     }
 
     public function leader(){
-        return $this0>academicians()->wherePivot('role','leader')->first();
+        return $this->academicians()->wherePivot('role','leader')->first();
     }
 
     public function milestones(){
         return $this->hasMany(Milestone::class);
+    }
+
+    public function academicianGrants()
+    {
+        return $this->hasMany(AcademicianGrant::class);
     }
 
 }

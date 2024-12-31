@@ -46,6 +46,10 @@
             </div>
         </div>
 
+        <br>
+        @can('isAcademician')
+        <a href="{{ route('milestones.create') }}" class="btn btn-success">Create A New Milestone</a>
+        @endcan
         <div class="card mt-3">
             <div class="card-header">
                 <h3>Milestones</h3>
@@ -63,6 +67,7 @@
                                 <th>Status</th>
                                 <th>Remarks</th>
                                 <th>Updated On</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -74,6 +79,9 @@
                                     <td>{{ $milestone->status }}</td>
                                     <td>{{ $milestone->remarks }}</td>
                                     <td>{{ $milestone->date_updated }}</td>
+                                    <td>
+                                        <a href="{{ route('milestones.edit', $milestone->id) }}" class="btn btn-primary">Edit</a>
+                                    </td> 
                                 </tr>
                             @endforeach
                         </tbody>

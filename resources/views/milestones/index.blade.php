@@ -3,7 +3,9 @@
 
     <div class="container">
         <h1>Milestones</h1>
+        @can('isAcademician')
         <a href="{{ route('milestones.create') }}" class="btn btn-success">Create</a>
+        @endcan
         <table class="table table-bordered">
             <thead>
                 <tr>
