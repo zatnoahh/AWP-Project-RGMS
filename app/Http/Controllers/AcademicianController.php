@@ -93,23 +93,21 @@ class AcademicianController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Academician $academician)
-    {
-        $request->validate([
-            'name' => 'required',
-            'staff_number' => 'required',
-            'email' => 'required',
-            'collage' => 'required',
-            'department' => 'required',
-            'position' => 'required',
-            'user_id' => 'required',
-        ]);
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|max:255',
+        'college' => 'required|string|max:255',
+        'department' => 'required|string|max:255',
+        'position' => 'required|string|max:255',
+    ]);
 
-        $academician->update($request->all());
+    $academician = Academician::findOrFail($id);
+    $academician->update($request->all());
 
-        return redirect()->route('academicians.index')
-            ->with('success','Academician updated successfully');
-    }
+    return redirect()->route('academicians.index')->with('success', 'Academician updated successfully');
+}
 
     /**
      * Remove the specified resource from storage.

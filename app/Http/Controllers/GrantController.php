@@ -124,22 +124,26 @@ class GrantController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Grant $grant)
-    {
-        $request->validate([
-            'grant_title' => 'required',
-            'grant_provider' => 'required',
-            'grant_amount' => 'required',
-            'description' => 'required',
-            'grant_start_date' => 'required',
-            'duration' => 'required',
-        ]);
+    public function update(Request $request, $id)
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'provider' => 'required|string|max:255',
+        'amount' => 'required|numeric',
+        'description' => 'required|string',
+        'duration' => 'required|numeric',
+    ]);
 
-        $grant->update($request->all());
+    $grant = Grant::findOrFail($id);
+    $grant->grant_title = $request->input('title');
+    $grant->grant_provider = $request->input('provider');
+    $grant->grant_amount = $request->input('amount');
+    $grant->description = $request->input('description');
+    $grant->duration = $request->input('duration');
+    $grant->save();
 
-        return redirect()->route('grants.index')
-            ->with('success','Grant updated successfully');
-    }
+    return redirect()->route('grants.index')->with('success', 'Grant updated successfully');
+}
 
     /**
      * Remove the specified resource from storage.

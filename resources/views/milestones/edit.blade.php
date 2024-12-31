@@ -20,7 +20,11 @@
         </div>
         <div class="form-group">
             <label for="status">Status:</label>
-            <input type="text" class="form-control" id="status" name="status" value="{{ $milestone->status }}" required>
+            <select class="form-control" id="status" name="status" required>
+            <option value="Pending" {{ $milestone->status == 'Pending' ? 'selected' : '' }}>Pending</option>
+            <option value="In Progress" {{ $milestone->status == 'In Progress' ? 'selected' : '' }}>In Progress</option>
+            <option value="Completed" {{ $milestone->status == 'Completed' ? 'selected' : '' }}>Completed</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="remarks">Remarks:</label>
