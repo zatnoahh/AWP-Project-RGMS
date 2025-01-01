@@ -47,55 +47,58 @@
   </head>
   <!--end::Head-->
   <!--begin::Body-->
-    <body class="login-page bg-body-secondary">
-        <div class="login-box">
-        <div class="card card-outline card-primary">
-            <div class="card-header">
-                <h1 class="mb-0 text-center"><b>RGMS</b></h1>
-            </a>
-            </div>
-            <div class="card-body login-card-body">
-        <p class="login-box-msg">Sign in to start your session</p>
-        <form action="{{ route('login') }}" method="POST">
-            @csrf
+  <body class="login-page bg-body-secondary">
+    <div class="login-box">
+      <div class="card card-outline card-primary">
+        <div class="card-header">
+          <a
+            href="../index2.html"
+            class="link-dark text-center link-offset-2 link-opacity-100 link-opacity-50-hover"
+          >
+            <h1 class="mb-0"><b>RGMS</h1>
+          </a>
+        </div>
+        <div class="card-body login-card-body">
+          <p class="login-box-msg">Sign in to start your session</p>
+          <form action="{{ route('home') }}" method="post">
             <div class="input-group mb-1">
-                <div class="form-floating">
-                    <input id="loginEmail" type="email" class="form-control" name="email" value="{{ old('email') }}" placeholder="Email" required autofocus />
-                    <label for="loginEmail">Email</label>
-                </div>
-                <div class="input-group-text"><span class="bi bi-envelope"></span></div>
+              <div class="form-floating">
+                <input id="loginEmail" type="email" class="form-control" value="" placeholder="" />
+                <label for="loginEmail">Email</label>
+              </div>
+              <div class="input-group-text"><span class="bi bi-envelope"></span></div>
             </div>
             <div class="input-group mb-1">
-                <div class="form-floating">
-                    <input id="loginPassword" type="password" class="form-control" name="password" placeholder="Password" required />
-                    <label for="loginPassword">Password</label>
-                </div>
-                <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
+              <div class="form-floating">
+                <input id="loginPassword" type="password" class="form-control" placeholder="" />
+                <label for="loginPassword">Password</label>
+              </div>
+              <div class="input-group-text"><span class="bi bi-lock-fill"></span></div>
             </div>
-            <div class="row mb-1">
-                <div class="col-8">
-                    <div class="icheck-primary">
-                        <input type="checkbox" id="remember" name="remember">
-                        <label for="remember">Remember Me</label>
-                    </div>
+            <!--begin::Row-->
+            <div class="row">
+              <div class="col-8 d-inline-flex align-items-center">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                  <label class="form-check-label" for="flexCheckDefault"> Remember Me </label>
                 </div>
-                <div class="col-4">
-                    <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+              </div>
+              <!-- /.col -->
+              <div class="col-4">
+                <div class="d-grid gap-2">
+                  <button type="submit" class="btn btn-primary">Sign In</button>
                 </div>
+              </div>
+              <!-- /.col -->
             </div>
-        </form>
+            <!--end::Row-->
+          </form>
 
           <!-- /.social-auth-links -->
-          <!-- <p class="mb-1"><a href="forgot-password.html">I forgot my password</a></p> -->
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="confirmStaff">
-            <label class="form-check-label" for="confirmStaff">
-                I confirm that I am a staff member
-            </label>
-        </div><p class="mb-0">
-            <a href="{{ route('register') }}" class="text-center"> Register a new account</a>
+          <p class="mb-1"><a href="forgot-password.html">I forgot my password</a></p>
+          <p class="mb-0">
+            <a href="register.html" class="text-center"> Register a new membership </a>
           </p>
-        
         </div>
         <!-- /.login-card-body -->
       </div>
@@ -143,24 +146,6 @@
       });
     </script>
     <!--end::OverlayScrollbars Configure-->
-
-    <!-- This script enables the register link only if the 'confirmStaff' checkbox is checked. -->
-    <script>
-            document.addEventListener('DOMContentLoaded', function () {
-                const confirmStaffCheckbox = document.getElementById('confirmStaff');
-                const registerLink = document.querySelector('a[href="{{ route('register') }}"]');
-
-                confirmStaffCheckbox.addEventListener('change', function () {
-                    registerLink.style.pointerEvents = this.checked ? 'auto' : 'none';
-                    registerLink.style.color = this.checked ? '' : 'gray';
-                });
-
-                // Initially disable the register link
-                registerLink.style.pointerEvents = 'none';
-                registerLink.style.color = 'gray';
-            });
-        </script>
-    <!-- End Confirm Staff -->
     <!--end::Script-->
   </body>
   <!--end::Body-->

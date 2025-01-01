@@ -34,3 +34,4 @@ Route::get('/error403', function () {
 
 Route::get('/projects', [App\Http\Controllers\ProjectController::class, 'index'])->name('projects.index');
 });
+

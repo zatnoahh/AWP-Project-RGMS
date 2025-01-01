@@ -103,7 +103,14 @@
                 </div>
                 <!--begin::Row-->
                 <div class="row">
-                    
+                    <div class="col-8 d-inline-flex align-items-center">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
+                            <label class="form-check-label" for="flexCheckDefault">
+                                I agree to the <a href="#">terms</a>
+                            </label>
+                        </div>
+                    </div>
                     <!-- /.col -->
                     <div class="col-4">
                         <div class="d-grid gap-2">
@@ -114,10 +121,18 @@
                 </div>
                 <!--end::Row-->
             </form>
-
+            <div class="social-auth-links text-center mb-3 d-grid gap-2">
+                <p>- OR -</p>
+                <a href="#" class="btn btn-primary">
+                    <i class="bi bi-facebook me-2"></i> Sign in using Facebook
+                </a>
+                <a href="#" class="btn btn-danger">
+                    <i class="bi bi-google me-2"></i> Sign in using Google+
+                </a>
+            </div>
             <!-- /.social-auth-links -->
             <p class="mb-0">
-                <a href="{{ route('login') }}" class="link-primary text-center">I already have a account</a>
+                <a href="{{ route('login') }}" class="link-primary text-center">I already have a membership</a>
             </p>
         </div>
         <!-- /.register-card-body -->

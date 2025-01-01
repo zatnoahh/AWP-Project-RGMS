@@ -28,7 +28,7 @@
                     <td>{{ $milestone->milestone_title }}</td>
                     <td>{{ $milestone->completion_date }}</td>
                     <td>{{ $milestone->deliverable }}</td>
-                    <td>{{ $milestone->status }}</td>
+                    <td class="status">{{ $milestone->status }}</td>
                     <td>{{ $milestone->remarks }}</td>
                     <td>{{ $milestone->date_updated }}</td>
                     <td>
@@ -46,4 +46,19 @@
         </table>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const statusElements = document.querySelectorAll('.status');
+            statusElements.forEach(function(statusElement) {
+                const status = statusElement.textContent.trim();
+                if (status === 'Pending') {
+                    statusElement.style.color = 'orange';
+                } else if (status === 'In Progress') {
+                    statusElement.style.color = 'blue';
+                } else if (status === 'Completed') {
+                    statusElement.style.color = 'green';
+                }
+            });
+        });
+    </script>
 @endsection
