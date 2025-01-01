@@ -16,7 +16,7 @@ class ProjectController extends Controller
         if(Gate::allows('isAcademician')){
             $grants = Grant::whereHas ('academicians', function ($query) {
                 $query->where('user_id', Auth::user()->id)
-                      ->where('role','member');
+                      ->where('role','Member');
             })->get();
         }
         return view('projects.index', compact('grants'));

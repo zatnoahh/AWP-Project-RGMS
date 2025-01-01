@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Grant;
 use App\Models\Academician;
 use App\Models\AcademicianGrant;
@@ -15,25 +18,40 @@ class GrantController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-    {
-        $user = Auth::user();
-    
-        if ($user->userCategory === 'admin' || $user->userCategory === 'staff') {
-            // Admin and staff can view all grants
-            $grants = Grant::all();
-        } elseif ($user->userCategory === 'academician' && $user->academician) {
-            // Academicians who are project leaders can view their grants
-            $grants = Grant::whereHas('academicianGrants', function ($query) use ($user) {
-                $query->where('academician_id', $user->academician->id)->where('role', 'Project Leader');
-            })->get();
-        } else {
-            // Other users cannot view any grants
-            $grants = collect();
-        }
+{
+    $user = Auth::user();
+    Log::info('User Info', ['user' => $user]);
 
-        $totalgrants = $grants->count();
-        return view('grants.index', compact('grants', 'totalgrants'));
+    // Admin and staff can view all grants
+    if ($user->userCategory === 'admin' || $user->userCategory === 'staff') {
+        $grants = Grant::all();
+        // dd($grants);
+
+    } 
+    // Academician-specific logic
+    elseif ($user->userCategory === 'academician') {
+        // Check if the user is a Project Leader
+        //$grants = Grant::all()
+
+        $grants = Grant::whereHas ('academicians', function ($query) {
+            $query->where('user_id', Auth::user()->id)
+                  ->where('role','Project Leader');
+        })->get();
+        // dd($grants);
+
+        
+    } 
+    // Other users cannot view any grants
+    else {
+        $grants = collect();
     }
+
+    Log::info('Grants for User', ['grants' => $grants]);
+
+    $totalGrants = $grants->count();
+    return view('grants.index', compact('grants', 'totalGrants'));
+}
+
 
     /**
      * Show the form for creating a new resource.

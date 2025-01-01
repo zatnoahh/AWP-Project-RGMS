@@ -35,36 +35,36 @@
                     @endforeach
                 </td>
                 <td>
-                <ul>
-@foreach($grant->academicians as $academician)
-    @if($academician->pivot->role == 'Member')
-        <li>{{ $academician->name }}</li>
-    @endif
-@endforeach
-                </ul>
-<td>{{ $grant->grant_provider }}</td>
-<td>{{ $grant->grant_amount }}</td>
-<td>{{ $grant->description }}</td>
-<td>{{ $grant->grant_start_date }}</td>
-<td>{{ $grant->duration }}</td>
-<td>
-    <a href="{{ route('grants.show', $grant->id) }}" class="btn btn-info">Show</a>
-    <a href="{{ route('grants.edit', $grant->id) }}" class="btn btn-primary">Edit</a>
-    @can('isAdmin')
-    <form method="POST" action="{{ route('grants.destroy', $grant->id) }}" style="display: inline;">
-        @csrf
-        @method('DELETE')
-        <button type="submit" class="btn btn-danger">Delete</button>
-    </form>
-    @endcan
-</td>
-</tr>
-@endforeach
-@else
-<tr>
-    <td colspan="10" class="text-center">You did not become any Project Leader of grants</td>
-</tr>
-@endif
+                    <ul>
+                        @foreach($grant->academicians as $academician)
+                            @if($academician->pivot->role == 'Member')
+                                <li>{{ $academician->name }}</li>
+                            @endif
+                        @endforeach
+                    </ul>
+                    <td>{{ $grant->grant_provider }}</td>
+                    <td>{{ $grant->grant_amount }}</td>
+                    <td>{{ $grant->description }}</td>
+                    <td>{{ $grant->grant_start_date }}</td>
+                    <td>{{ $grant->duration }}</td>
+                    <td>
+                        <a href="{{ route('grants.show', $grant->id) }}" class="btn btn-info">Show</a>
+                        <a href="{{ route('grants.edit', $grant->id) }}" class="btn btn-primary">Edit</a>
+                        @can('isAdmin')
+                        <form method="POST" action="{{ route('grants.destroy', $grant->id) }}" style="display: inline;">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                        @endcan
+                    </td>
+                    </tr>
+                    @endforeach
+                    @else
+                    <tr>
+                        <td colspan="10" class="text-center">You did not become any Project Leader of grants</td>
+                    </tr>
+                    @endif
             </tbody>
         </table>
     </div>
