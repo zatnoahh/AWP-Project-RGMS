@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Grant;
 use App\Models\Milestone;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class MilestoneController extends Controller
 {
@@ -13,9 +15,24 @@ class MilestoneController extends Controller
      */
     public function index()
     {
-        $milestones = Milestone::all();
-        return view('milestones.index',compact('milestones'));
-    
+        $user = Auth::user();
+
+        if (Gate::allows('isAdmin') || Gate::allows('isStaff')) {
+            $milestones = Milestone::all();
+        } elseif (Gate::allows('isAcademician')) {
+            // Academicians can see only the milestones for the grants they are involved in
+            $grants = Grant::whereHas('academicians', function ($query) {
+            $query->where('user_id', Auth::user()->id);
+            })->pluck('id');
+
+            $milestones = Milestone::whereIn('grant_id', $grants)->get();
+        } else {
+            // Default to no milestones if the user category is not recognized
+            $milestones = collect();
+        }
+
+        return view('milestones.index', compact('milestones'));
+
         // i want admin and staff can see all the milestone, but for academician , they can see all the milestone on the grant they involved only
     }
 

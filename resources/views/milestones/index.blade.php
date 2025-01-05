@@ -21,6 +21,11 @@
                 </tr>
             </thead>
             <tbody>
+                @if($milestones->isEmpty())
+                <tr>
+                    <td colspan="9">No milestones found.</td>
+                </tr>
+                @endif
                 @foreach($milestones as $milestone)
                 <tr>
                     <td>{{ $milestone->grant_id }}</td>
