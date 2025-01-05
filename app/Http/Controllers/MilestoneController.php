@@ -15,7 +15,10 @@ class MilestoneController extends Controller
     {
         $milestones = Milestone::all();
         return view('milestones.index',compact('milestones'));
+    
+        // i want admin and staff can see all the milestone, but for academician , they can see all the milestone on the grant they involved only
     }
+
 
     /**
      * Show the form for creating a new resource.

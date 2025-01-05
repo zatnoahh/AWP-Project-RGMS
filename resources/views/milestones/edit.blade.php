@@ -36,6 +36,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Update Milestone</button>
     </form>
-    <a href="{{ route('milestones.index') }}" class="btn btn-secondary mt-3">Back to Milestone</a>
+    <a href="{{ url()->previous() }}" class="btn btn-secondary mt-3">Cancel</a>
 
 @endsection

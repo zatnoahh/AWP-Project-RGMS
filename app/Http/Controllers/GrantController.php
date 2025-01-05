@@ -18,39 +18,39 @@ class GrantController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-{
-    $user = Auth::user();
-    Log::info('User Info', ['user' => $user]);
+    {
+        $user = Auth::user();
+        Log::info('User Info', ['user' => $user]);
 
-    // Admin and staff can view all grants
-    if ($user->userCategory === 'admin' || $user->userCategory === 'staff') {
-        $grants = Grant::all();
-        // dd($grants);
+        // Admin and staff can view all grants
+        if ($user->userCategory === 'admin' || $user->userCategory === 'staff') {
+            $grants = Grant::all();
+            // dd($grants);
 
-    } 
-    // Academician-specific logic
-    elseif ($user->userCategory === 'academician') {
-        // Check if the user is a Project Leader
-        //$grants = Grant::all()
+        } 
+        // Academician-specific logic
+        elseif ($user->userCategory === 'academician') {
+            // Check if the user is a Project Leader
+            //$grants = Grant::all()
 
-        $grants = Grant::whereHas ('academicians', function ($query) {
-            $query->where('user_id', Auth::user()->id)
-                  ->where('role','Project Leader');
-        })->get();
-        // dd($grants);
+            $grants = Grant::whereHas ('academicians', function ($query) {
+                $query->where('user_id', Auth::user()->id)
+                    ->where('role','Project Leader');
+            })->get();
+            // dd($grants);
 
-        
-    } 
-    // Other users cannot view any grants
-    else {
-        $grants = collect();
+            
+        } 
+        // Other users cannot view any grants
+        else {
+            $grants = collect();
+        }
+
+        Log::info('Grants for User', ['grants' => $grants]);
+
+        $totalGrants = $grants->count();
+        return view('grants.index', compact('grants', 'totalGrants'));
     }
-
-    Log::info('Grants for User', ['grants' => $grants]);
-
-    $totalGrants = $grants->count();
-    return view('grants.index', compact('grants', 'totalGrants'));
-}
 
 
     /**
