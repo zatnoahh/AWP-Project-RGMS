@@ -11,13 +11,14 @@
             @csrf
                 <div class="row">
                     <div class="col-md-6 form-group">
-                        <label for="grant_id">Select Grant:</label>
-                        <select name="grant_id" id="grant_id" class="form-control" required>
-                            <option value="">-- Select a Grant --</option>
-                            @foreach($grants as $grant)
-                                <option value="{{ $grant->id }}">{{ $grant->grant_title }}</option>
-                            @endforeach
-                        </select>
+                    <label for="grant_id">Grant</label>
+                    <select name="grant_id" id="grant_id" class="form-control" required>
+                        @foreach($grants as $grant)
+                            <option value="{{ $grant->id }}" {{ isset($grantId) && $grantId == $grant->id ? 'selected' : '' }}>
+                                {{ $grant->grant_title }}
+                            </option>
+                        @endforeach
+                    </select>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="milestone_title">Milestone Title:</label>
@@ -37,7 +38,12 @@
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="status">Status:</label>
-                        <input type="text" class="form-control" id="status" name="status" required>
+                        <select class="form-control" id="status" name="status" required>
+                            <option value="" disabled selected>Please select the status</option>
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                        </select>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="date_updated">Date Updated:</label>

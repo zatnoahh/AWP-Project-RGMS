@@ -48,8 +48,8 @@
 
         <br>
         @can('isAcademician')
-        <a href="{{ route('milestones.create') }}" class="btn btn-success">Create A New Milestone</a>
-        @endcan
+        <a href="{{ route('milestones.create', ['grant_id' => $grant->id]) }}" class="btn btn-success">Create A New Milestone</a>
+            @endcan
         <div class="card mt-3">
             <div class="card-header">
                 <h3>Milestones</h3>

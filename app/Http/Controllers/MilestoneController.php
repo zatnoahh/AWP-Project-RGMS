@@ -40,10 +40,12 @@ class MilestoneController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    
+    public function create(Request $request)
     {
+        $grantId = $request->input('grant_id');
         $grants = Grant::all();
-        return view('milestones.create', compact('grants'));
+        return view('milestones.create', compact('grants', 'grantId'));
     }
 
     /**
