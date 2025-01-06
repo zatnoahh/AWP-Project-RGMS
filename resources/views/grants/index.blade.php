@@ -9,7 +9,7 @@
         <table class="table table-bordered" >
             <thead>
             <tr>
-                <th>ID</th>
+                <th>No</th>
                 <th>Grant Title</th>
                 <th>Grant Project Leader</th>
                 <th>Grant Members</th>
@@ -25,7 +25,7 @@
             @if($grants->isNotEmpty())
             @foreach($grants as $grant)
             <tr>
-                <td>{{ $grant->id }}</td>
+                <td>{{ $loop->iteration }}</td>
                 <td>{{ $grant->grant_title }}</td>
                 <td>
                     @foreach($grant->academicians as $academician)

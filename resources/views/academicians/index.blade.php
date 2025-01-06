@@ -9,7 +9,7 @@
         <table class="table table-bordered" >
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <th>No</th>
                     <th>Name</th>
                     <th>Staff Number</th>
                     <th>Email</th>
@@ -22,7 +22,7 @@
             <tbody>
                 @foreach($academicians as $academician)
                 <tr>
-                    <td>{{ $academician->id }}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $academician->name }}</td>
                     <td>{{ $academician->staff_number }}</td>
                     <td>{{ $academician->email }}</td>
