@@ -31,6 +31,8 @@ Route::get('/error403', function () {
         ->with('message', 'You are not authorized to access this page.');
 });
 
+Route::get('/calendar/milestones', [CalendarController::class, 'milestones'])->name('calendar.milestones');
+
 
 Route::get('/projects', [App\Http\Controllers\ProjectController::class, 'index'])->name('projects.index');
 });
