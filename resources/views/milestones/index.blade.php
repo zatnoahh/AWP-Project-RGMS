@@ -39,11 +39,13 @@
                     <td>
                         <a href="{{ route('milestones.show', $milestone->id) }}" class="btn btn-info">Show</a>
                         <a href="{{ route('milestones.edit', $milestone->id) }}" class="btn btn-primary">Edit</a>
+                        @can('isAdmin')
                         <form method="POST" action="{{ route('milestones.destroy', $milestone->id) }}" style="display: inline;">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
+                        @endcan
                     </td>
                 </tr>
                 @endforeach
