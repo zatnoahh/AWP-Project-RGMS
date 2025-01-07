@@ -57,7 +57,6 @@ class AppServiceProvider extends ServiceProvider
             return in_array($user->role, ['admin', 'staff']);
         });
         
-
     }
 
     }
