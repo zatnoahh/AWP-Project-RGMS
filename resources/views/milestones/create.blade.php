@@ -13,7 +13,8 @@
                     <div class="col-md-6 form-group">
                     <label for="grant_id">Grant</label>
                     <select name="grant_id" id="grant_id" class="form-control" required>
-                        @foreach($grants as $grant)
+                    <option value="" disabled selected>Please select a grant</option>
+                    @foreach($grants as $grant)
                             <option value="{{ $grant->id }}" {{ isset($grantId) && $grantId == $grant->id ? 'selected' : '' }}>
                                 {{ $grant->grant_title }}
                             </option>

@@ -118,6 +118,44 @@
                     </div>
                     <!--end::Small Box Widget 3-->
                 </div>
+
+                @can('isAdmin')
+                <div class="row justify-content-center">
+                <!-- Chart Section -->
+                <div class="col-lg-4 col-md-12 mb-3">
+                <div class="card h-100">
+                    <div class="card-header">
+                        <h3 class="card-title">Milestone Status</h3>
+                    </div>
+                    <div class="card-body d-flex justify-content-center align-items-center">
+                        <canvas id="milestoneChart" style="max-height: 300px;"></canvas>
+                    </div>
+                </div>
+            </div>
+
+                <!-- Upcoming Deadlines Section -->
+                <div class="col-lg-4 col-md-12 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h3 class="card-title">Upcoming Deadlines</h3>
+                        </div>
+                        <div class="card-body">
+                            <ul class="list-group">
+                                @foreach($upcomingDeadlines as $deadline)
+                                    <li class="list-group-item">
+                                        <strong>{{ $deadline->milestone_title }}</strong>
+                                        <span class="badge bg-primary float-end">{{ $deadline->completion_date->format('d M Y') }}</span>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @endcan
+                <!--end::Col-->
+
+<!-- ...existing code... -->
             </div>
             <!--end::Row-->
             <!-- /.row (main row) -->
@@ -127,4 +165,40 @@
     <!--end::App Content-->
 </main>
 <!--end::App Main-->
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var ctx = document.getElementById('milestoneChart').getContext('2d');
+        var milestoneChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: ['Pending', 'In Progress', 'Completed'],
+                datasets: [{
+                    data: [{{ $pendingMilestones }}, {{ $inProgressMilestones }}, {{ $completedMilestones }}],
+                    backgroundColor: ['#FF6384', '#FFCE56', '#36A2EB'],
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (context) {
+                                var label = context.label || '';
+                                if (label) {
+                                    label += ': ';
+                                }
+                                label += context.raw;
+                                return label;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    });
+</script>
 @endsection

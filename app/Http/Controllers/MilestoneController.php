@@ -41,13 +41,23 @@ class MilestoneController extends Controller
      * Show the form for creating a new resource.
      */
     
-    public function create(Request $request)
-    {
-        $grantId = $request->input('grant_id');
-        $grants = Grant::all();
-        return view('milestones.create', compact('grants', 'grantId'));
-    }
-
+     public function create(Request $request)
+     {
+         $user = Auth::user();
+         $grantId = $request->input('grant_id');
+     
+         if ($user->userCategory === 'admin') {
+             // Admin can see all grants
+             $grants = Grant::all();
+         } else {
+             // Academicians can see only the grants they are involved in
+             $grants = Grant::whereHas('academicians', function ($query) use ($user) {
+                 $query->where('user_id', $user->id);
+             })->get();
+         }
+     
+         return view('milestones.create', compact('grants', 'grantId'));
+     }
     /**
      * Store a newly created resource in storage.
      */
