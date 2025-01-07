@@ -53,7 +53,9 @@ class AcademicianController extends Controller
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'staff_number' => $request->staff_number,
             'password' => Hash::make('0000'),  // Default password "0000"
+            'userCategory' => 'academician',
         ]);
 
         // Step 2: Create the academician and associate the user_id
