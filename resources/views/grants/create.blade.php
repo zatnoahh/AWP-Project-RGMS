@@ -15,14 +15,14 @@
                             <input type="text" class="form-control" id="title" name="grant_title" required>
                         </div>
                         <div class="col-md-6 form-group">
-    <label for="project_leader">Project Leader</label>
-    <select class="form-control" id="project_leader" name="project_leader">
-        <option value="">Select a Project Leader</option>
-        @foreach($academicians as $academician)
-            <option value="{{ $academician->id }}">{{ $academician->name }}</option>
-        @endforeach
-    </select>
-</div>
+                        <label for="project_leader">Project Leader</label>
+                        <select class="form-control" id="project_leader" name="project_leader">
+                            <option value="">Select a Project Leader</option>
+                            @foreach($academicians as $academician)
+                                <option value="{{ $academician->id }}">{{ $academician->name }}</option>
+                            @endforeach
+                        </select>   
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 form-group">

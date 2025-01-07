@@ -60,9 +60,7 @@ class GrantController extends Controller
     {
         $grants = Grant::all();
         // Fetch all academicians who are not project leaders
-        $academicians = Academician::whereDoesntHave('grants', function ($query) {
-            $query->where('role', 'Project Leader');
-        })->get();
+        $academicians = Academician::all();
 
         // Return the grant creation form view
         return view('grants.create', compact('academicians'));
