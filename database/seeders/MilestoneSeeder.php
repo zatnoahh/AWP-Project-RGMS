@@ -19,7 +19,7 @@ class MilestoneSeeder extends Seeder
         $milestonesData = [
             // Milestones for Grant 1
             [
-            'grants_id' => 1,
+            'grant_id' => 1,
             'milestone_title' => 'Initial Research Proposal',
             'completion_date' => '2024-01-30',
             'deliverable' => 'Submitted proposal document',
@@ -30,7 +30,7 @@ class MilestoneSeeder extends Seeder
             'updated_at' => Carbon::now(),
             ],
             [
-            'grants_id' => 1,
+            'grant_id' => 1,
             'milestone_title' => 'Data Collection Phase',
             'completion_date' => '2024-06-15',
             'deliverable' => 'Dataset of energy usage patterns.',
@@ -41,7 +41,7 @@ class MilestoneSeeder extends Seeder
             'updated_at' => Carbon::now(),
             ],
             [
-            'grants_id' => 1,
+            'grant_id' => 1,
             'milestone_title' => 'Model Development',
             'completion_date' => '2024-12-10',
             'deliverable' => 'AI-driven optimization model.',
@@ -54,7 +54,7 @@ class MilestoneSeeder extends Seeder
 
             // Milestones for Grant 2
             [
-            'grants_id' => 2,
+            'grant_id' => 2,
             'milestone_title' => 'Literature Review Compilation',
             'completion_date' => '2024-03-20',
             'deliverable' => 'Comprehensive literature review report',
@@ -65,7 +65,7 @@ class MilestoneSeeder extends Seeder
             'updated_at' => Carbon::now(),
             ],
             [
-            'grants_id' => 2,
+            'grant_id' => 2,
             'milestone_title' => 'Prototype Development',
             'completion_date' => '2024-07-15',
             'deliverable' => 'Initial prototype for water management.',
@@ -78,7 +78,7 @@ class MilestoneSeeder extends Seeder
 
             // Milestones for Grant 3
             [
-            'grants_id' => 3,
+            'grant_id' => 3,
             'milestone_title' => 'Algorithm Testing Phase',
             'completion_date' => '2024-07-15',
             'deliverable' => 'Tested quantum algorithms for optimization.',
@@ -89,7 +89,7 @@ class MilestoneSeeder extends Seeder
             'updated_at' => Carbon::now(),
             ],
             [
-            'grants_id' => 3,
+            'grant_id' => 3,
             'milestone_title' => 'Final Validation',
             'completion_date' => '2025-02-01',
             'deliverable' => 'Validated quantum algorithm for efficiency.',
@@ -102,7 +102,7 @@ class MilestoneSeeder extends Seeder
 
             // Milestones for Grant 4
             [
-            'grants_id' => 4,
+            'grant_id' => 4,
             'milestone_title' => 'Renewable Energy Integration Testing',
             'completion_date' => '2025-01-31',
             'deliverable' => 'Integration of renewable energy sources completed.',
@@ -113,7 +113,7 @@ class MilestoneSeeder extends Seeder
             'updated_at' => Carbon::now(),
             ],
             [
-            'grants_id' => 4,
+            'grant_id' => 4,
             'milestone_title' => 'Field Deployment',
             'completion_date' => '2025-06-30',
             'deliverable' => 'System deployed in test field.',
@@ -126,7 +126,7 @@ class MilestoneSeeder extends Seeder
 
             // Milestones for Grant 5
             [
-            'grants_id' => 5,
+            'grant_id' => 5,
             'milestone_title' => 'Preliminary Design Approval',
             'completion_date' => '2024-11-30',
             'deliverable' => 'Approved design for AI-enhanced logistics.',
@@ -137,7 +137,7 @@ class MilestoneSeeder extends Seeder
             'updated_at' => Carbon::now(),
             ],
             [
-            'grants_id' => 5,
+            'grant_id' => 5,
             'milestone_title' => 'System Integration Testing',
             'completion_date' => '2025-03-31',
             'deliverable' => 'Integration of system modules completed.',
@@ -151,11 +151,11 @@ class MilestoneSeeder extends Seeder
 
         foreach ($milestonesData as $milestone) {
             // Find the grant by grant_id
-            $grant = Grant::where('id', $milestone['grants_id'])->first();
+            $grant = Grant::where('id', $milestone['grant_id'])->first();
 
             if ($grant) {
                 Milestone::create([
-                    'grants_id' => $grant->id,
+                    'grant_id' => $grant->id,
                     'milestone_title' => $milestone['milestone_title'],
                     'completion_date' => $milestone['completion_date'],
                     'deliverable' => $milestone['deliverable'],

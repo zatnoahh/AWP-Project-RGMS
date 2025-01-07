@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('milestones', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('grants_id');
-            $table->foreign('grants_id')->references('id')->on('grants')->onDelete('cascade');
+            $table->unsignedBigInteger('grant_id');
+            $table->foreign('grant_id')->references('id')->on('grants')->onDelete('cascade');
             $table->string('milestone_title')->varchar(100);
             $table->date('completion_date');
             $table->string('deliverable');
