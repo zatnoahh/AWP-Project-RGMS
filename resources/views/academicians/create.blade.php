@@ -27,13 +27,23 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="college">College:</label>
-                        <input type="text" class="form-control" id="college" name="college" required>
+                        <select class="form-control" id="college" name="college" required>
+                            <option value="" disabled selected>Please select a college</option>
+                            <option value="College of Engineering">College of Engineering (COE)</option>
+                            <option value="College of Science">College of Computing & Informatics (CCI)</option>
+                        </select>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label for="department">Department:</label>
-                        <input type="text" class="form-control" id="department" name="department" required>
+                        <select class="form-control" id="department" name="department" required>
+                            <option value="" disabled selected>Please select a department</option>
+                            <option value="Department of Computer Science">Department of Computer Science</option>
+                            <option value="Department of Electrical Engineering">Department of Electrical Engineering</option>
+                            <option value="Department of Mechanical Engineering">Department of Mechanical Engineering</option>
+                            <option value="Department of Civil Engineering">Department of Civil Engineering</option>
+                        </select>
                     </div>
                     <div class="col-md-6 form-group">
                         <label for="position">Position:</label>

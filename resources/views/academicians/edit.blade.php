@@ -20,11 +20,21 @@
         </div>
         <div class="form-group">
             <label for="college">College:</label>
-            <input type="text" class="form-control" id="college" name="college" value="{{ $academician->college }}" required>
+            <select class="form-control" id="college" name="college" required>
+                <option value="">Select College</option>
+                <option value="College of Engineering(COE)" {{ $academician->college == 'College of Engineering' ? 'selected' : '' }}>College of Engineering (COE)</option>
+                <option value="College of Computing & Informatics (CCI)" {{ $academician->college == 'College of Computing & Informatics (CCI)' ? 'selected' : '' }}>College of Computing & Informatics (CCI)</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="department">Department:</label>
-            <input type="text" class="form-control" id="department" name="department" value="{{ $academician->department }}" required>
+            <select class="form-control" id="department" name="department" required>
+                <option value="">Select Department</option>
+                <option value="Department of Computer Science" {{ $academician->department == 'Department of Computer Science' ? 'selected' : '' }}>Department of Computer Science</option>
+                <option value="Department of Electrical Engineering" {{ $academician->department == 'Department of Electrical Engineering' ? 'selected' : '' }}>Department of Electrical Engineering</option>
+                <option value="Department of Mechanical Engineering" {{ $academician->department == 'Department of Mechanical Engineering' ? 'selected' : '' }}>Department of Mechanical Engineering</option>
+                <option value="Department of Civil Engineering" {{ $academician->department == 'Department of Civil Engineering' ? 'selected' : '' }}>Department of Civil Engineering</option>
+            </select>
         </div>
         <div class="form-group">
             <label for="position">Position:</label>
