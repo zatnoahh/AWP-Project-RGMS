@@ -12,7 +12,6 @@
                 <thead>
                     <tr>
                         <th>No</th>
-                        <th>Grant Title</th>
                         <th>Milestone Title</th>
                         <th>Completion Date</th>
                         <th>Deliverable</th>
@@ -26,7 +25,6 @@
                     @forelse($grant->milestones as $milestone)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $grant->grant_title }}</td>
                             <td>{{ $milestone->milestone_title }}</td>
                             <td>{{ $milestone->completion_date }}</td>
                             <td>{{ $milestone->deliverable }}</td>
