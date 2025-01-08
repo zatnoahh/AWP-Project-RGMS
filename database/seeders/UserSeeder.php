@@ -23,13 +23,6 @@ class UserSeeder extends Seeder
                 'staff_number' => 'A001',
             ],
             [
-                'name' => 'Hannah Zaki',
-                'email' => 'hannah@uniten.edu.my',
-                'password' => Hash::make('12345678'), // Default password
-                'userCategory' => 'staff',
-                'staff_number' => 'ST001',
-            ],
-            [
                 'name' => 'Hazeem Luqman',
                 'email' => 'zeem@uniten.edu.my',
                 'password' => Hash::make('password'), // Default password

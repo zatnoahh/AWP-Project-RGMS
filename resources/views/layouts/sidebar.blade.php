@@ -73,6 +73,14 @@
                   <p>Milestones</p>
                 </a>
               </li>
+              @can('isAdmin')
+              <li class="nav-item">
+                <a href="{{ route('users.index') }}" class="nav-link">
+                  <i class="nav-icon bi bi-person-fill-lock"></i>
+                  <p>Users</p>
+                </a>
+              </li>
+              @endcan
 
               <!-- 
               <li class="nav-header">SETTING</li>

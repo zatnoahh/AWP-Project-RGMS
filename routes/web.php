@@ -5,6 +5,7 @@ use App\Http\Controllers\GrantController;
 use App\Http\Controllers\MilestoneController;
 use App\Http\Controllers\AcademicianController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('Welcome');
@@ -37,3 +38,4 @@ Route::get('/calendar/milestones', [CalendarController::class, 'milestones'])->n
 Route::get('/projects', [App\Http\Controllers\ProjectController::class, 'index'])->name('projects.index');
 });
 
+Route::resource('users', UserController::class);
