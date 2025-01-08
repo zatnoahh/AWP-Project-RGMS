@@ -88,9 +88,11 @@
             
             
             <!-- Main content Section -->
+
             <section class="content">
-                @yield('content') <!-- This is where page-specific content will be injected -->
+              @yield('content') <!-- This is where page-specific content will be injected -->
             </section>
+
         </div>
   
         <!-- Footer Section -->
