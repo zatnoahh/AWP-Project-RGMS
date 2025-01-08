@@ -48,15 +48,24 @@
                     <td>{{ $grant->grant_start_date }}</td>
                     <td>{{ $grant->duration }}</td>
                     <td>
-                        <a href="{{ route('grants.show', $grant->id) }}" class="btn btn-info">Show</a>
-                        <a href="{{ route('grants.edit', $grant->id) }}" class="btn btn-primary">Edit</a>
-                        @can('isAdmin')
-                        <form method="POST" action="{{ route('grants.destroy', $grant->id) }}" style="display: inline;">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                        @endcan
+                        <div class="btn-group dropend">
+                            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                Actions
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('grants.show', $grant->id) }}">Show</a></li>
+                                <li><a class="dropdown-item" href="{{ route('grants.edit', $grant->id) }}">Edit</a></li>
+                                @can('isAdmin')
+                                <li>
+                                    <form method="POST" action="{{ route('grants.destroy', $grant->id) }}" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="dropdown-item">Delete</button>
+                                    </form>
+                                </li>
+                                @endcan
+                            </ul>
+                        </div>
                     </td>
                     </tr>
                     @endforeach
