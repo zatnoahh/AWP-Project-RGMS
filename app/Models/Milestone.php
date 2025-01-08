@@ -10,7 +10,7 @@ class Milestone extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['grant_id','milestone_id','milestone_title','completion_date','deliverable','status','remarks','date_updated'];
+    protected $fillable = ['milestone_id','grant_id','milestone_title','completion_date','deliverable','status','remarks','date_updated'];
 
     protected $casts = [
         'completion_date' => 'datetime',

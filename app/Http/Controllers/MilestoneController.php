@@ -102,26 +102,26 @@ class MilestoneController extends Controller
      * Update the specified resource in storage.
      */
     
-    public function update(Request $request, $id)
-    {
-        $request->validate([
-            'completion_date' => 'required|date',
-            'deliverable' => 'required|string|max:255',
-            'status' => 'required|string|max:255',
-            'remarks' => 'nullable|string',
-            'date_updated' => 'required|date',
-        ]);
-
-        $milestone = Milestone::findOrFail($id);
-        $milestone->completion_date = $request->completion_date;
-        $milestone->deliverable = $request->deliverable;
-        $milestone->status = $request->status;
-        $milestone->remarks = $request->remarks;
-        $milestone->date_updated = $request->date_updated;
-        $milestone->save();
-
-        return redirect()->route('milestones.index')->with('success', 'Milestone updated successfully');
-    }
+     public function update(Request $request, $id)
+     {
+         $request->validate([
+             'title' => 'required|string|max:255',
+             'deliverable' => 'required|string|max:255',
+             'status' => 'required|string|max:255',
+             'remarks' => 'nullable|string',
+             'date_updated' => 'required|date',
+         ]);
+     
+         $milestone = Milestone::findOrFail($id);
+         $milestone->milestone_title = $request->input('title');
+         $milestone->deliverable = $request->input('deliverable');
+         $milestone->status = $request->input('status');
+         $milestone->remarks = $request->input('remarks');
+         $milestone->date_updated = $request->input('date_updated');
+         $milestone->save();
+     
+         return redirect()->route('milestones.index')->with('success', 'Milestone updated successfully');
+     }
 
     /**
      * Remove the specified resource from storage.
