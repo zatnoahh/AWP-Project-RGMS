@@ -46,8 +46,8 @@
                 <td>{{ $grant->duration }}</td>
                 <td>
                     <a href="{{ route('grants.show', $grant->id) }}" class="btn btn-info">Show</a>
-                    <a href="{{ route('grants.edit', $grant->id) }}" class="btn btn-primary">Edit</a>
                     @can('isAdmin')
+                    <a href="{{ route('grants.edit', $grant->id) }}" class="btn btn-primary">Edit</a>
                     <form method="POST" action="{{ route('grants.destroy', $grant->id) }}" style="display: inline;">
                         @csrf
                         @method('DELETE')
