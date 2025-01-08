@@ -25,10 +25,9 @@ class MilestoneController extends Controller
             // Academicians can see only the milestones for the grants they are involved in
             $grants = Grant::whereHas('academicians', function ($query) {
             $query->where('user_id', Auth::user()->id);
-            })->pluck('id');
+            })->get();
 
-            $milestones = Milestone::whereIn('grant_id', $grants)->get();
-            $grants = Grant::with('milestones')->get();
+            $milestones = Milestone::whereIn('grant_id', $grants->pluck('id'))->get();
         } else {
             // Default to no milestones if the user category is not recognized
             $milestones = collect();
@@ -36,7 +35,6 @@ class MilestoneController extends Controller
 
         return view('milestones.index', compact('milestones', 'grants'));
 
-        // i want admin and staff can see all the milestone, but for academician , they can see all the milestone on the grant they involved only
     }
 
 
