@@ -16,9 +16,11 @@ class MilestoneController extends Controller
     public function index()
     {
         $user = Auth::user();
+        
 
         if (Gate::allows('isAdmin') || Gate::allows('isStaff')) {
             $milestones = Milestone::all();
+            $grants = Grant::with('milestones')->get();
         } elseif (Gate::allows('isAcademician')) {
             // Academicians can see only the milestones for the grants they are involved in
             $grants = Grant::whereHas('academicians', function ($query) {
@@ -26,12 +28,13 @@ class MilestoneController extends Controller
             })->pluck('id');
 
             $milestones = Milestone::whereIn('grant_id', $grants)->get();
+            $grants = Grant::with('milestones')->get();
         } else {
             // Default to no milestones if the user category is not recognized
             $milestones = collect();
         }
 
-        return view('milestones.index', compact('milestones'));
+        return view('milestones.index', compact('milestones', 'grants'));
 
         // i want admin and staff can see all the milestone, but for academician , they can see all the milestone on the grant they involved only
     }
