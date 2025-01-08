@@ -1,6 +1,6 @@
 @extends('layouts.master')
-@section('content')
 
+@section('content')
 <div class="container">
     <h1>Edit Grant</h1>
     <form  method="POST" action="{{ route('grants.update', $grant->id) }}">
