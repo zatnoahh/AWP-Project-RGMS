@@ -123,9 +123,16 @@ class AcademicianController extends Controller
      */
     public function destroy(Academician $academician)
     {
+        // Delete the associated user
+        $user = User::find($academician->user_id);
+        if ($user) {
+            $user->delete();
+        }
+
+        // Delete the academician
         $academician->delete();
 
         return redirect()->route('academicians.index')
-            ->with('success','Academician deleted successfully');
+            ->with('success', 'Academician and associated user deleted successfully');
     }
 }
